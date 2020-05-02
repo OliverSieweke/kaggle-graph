@@ -1,0 +1,24 @@
+name: Kaggle Graph Generation
+
+on:
+  push:
+    branches: master
+  schedule:
+    - cron:  '00 00 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+      - name: Kaggle Graph Generation
+        uses: OliverSieweke/kaggle-graph@v0.1.0
+        with:
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          KAGGLE_USERNAME: oliversieweke
+          KAGGLE_COMPETITION_ID: titanic
+      - name: Git Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v4.1.6
+        with:
+          commit_message: Automatic Kaggle graph generation

@@ -1,0 +1,38 @@
+name: "Kaggle Graph Generation"
+author: "Oliver Sieweke"
+description: "Generate a graph of your submissions to a Kaggle competition."
+branding:
+  icon: "trending-up"
+  color: "blue"
+
+inputs:
+  KAGGLE_USERNAME:
+    required: true
+    description: Kaggle username, to be found on Kaggle under My Profile > Edit Profile.
+  KAGGLE_KEY:
+    required: true
+    description: Kaggle key ID, to be read from the competition's URL.
+  KAGGLE_COMPETITION_ID:
+    required: true
+    description: Kaggle Competition ID, to be read from the competition's URL.
+  GRAPH_NAME:
+    required: false
+    description: Output graph file name.
+  Y_MIN:
+    required: false
+    description: Y-axis mimumium boundary.
+  Y_MAX:
+    required: false
+    description: Y-axis maximum boundary.
+  SCORE:
+    required: false
+    description: Whether the score is to be maximized (positive) or minimized (negative).
+    default: "positive"
+  OBJECTIVE:
+    required: false
+    description: Score objective to be shown on the graph.
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
